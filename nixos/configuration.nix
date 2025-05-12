@@ -89,25 +89,22 @@
     ];
   };
   home-manager.users.abadi199 = { pkgs, ... }: {
-    programs.bash.enable = true;
-  
     # The state version is required and should stay at the version you
     # originally installed.
     home.stateVersion = "24.11";
   };
 
-  # Install firefox.
-  programs.firefox.enable = true;
   programs.zsh.enable = true;
+  programs.firefox.enable = true;
 
   # Allow unfree packages
   nixpkgs.config = {
     allowUnfree = true;
-    packageOverrides = pkgs: {
-      unstable = import <nixos-unstable> {
-        config = config.nixpkgs.config;
-      };
-    };
+    # packageOverrides = pkgs: {
+    #   unstable = import <nixos-unstable> {
+    #     config = config.nixpkgs.config;
+    #   };
+    # };
   };
 
 
@@ -118,7 +115,7 @@
   };
 
   environment.systemPackages = with pkgs; [
-    vim 
+    vim
     wget
     home-manager
   ];
